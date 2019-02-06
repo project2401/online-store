@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import Product from './Components/Product';
 import ProductTitle from './Components/ProductTitle';
 
+// import Registration from './Components/Registration';
+// import {NavLink} from 'react-router-dom'
+// import Login from './Components/Login';
+
 class App extends Component {
   state = {
     prod:[],
@@ -19,15 +23,23 @@ class App extends Component {
     const {prod}=this.state
     this.setState(( {selectProduct})=>{
       const idx = prod.findIndex(el=>el.id===id)
-      const oldItem = prod[idx]oldItem}
+      // console.log(idx);
+      
+      const oldItem = prod[idx]
+    //   console.log('oldItem = ',oldItem);
+      // const newProduct = {...oldItem}
       return{
         selectProduct: [oldItem]
       }
     })
+    // console.log('select',this.state.selectProduct);
+    
   }
   
   render() {
+    // const {product} = this.state
     const { prod, selectProduct } = this.state
+    // console.log('Product =', prod);
     
     return (
         <div>
