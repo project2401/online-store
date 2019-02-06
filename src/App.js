@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import Product from './Components/Product';
 import ProductTitle from './Components/ProductTitle';
 
-// import Registration from './Components/Registration';
-// import {NavLink} from 'react-router-dom'
-// import Login from './Components/Login';
-
-class App extends Component {
+export default class App extends Component {
   state = {
     prod:[],
-    selectProduct:[]
+    selectProduct:[],
+    rate:[]
   }
   componentDidMount(){
     fetch('http://smktesting.herokuapp.com/api/products/',{
@@ -20,26 +17,26 @@ class App extends Component {
     )
   }
   selectProduct = (id, items) => {
+    fetch(`http://smktesting.herokuapp.com/api/reviews/${id}`,{
+      method:'get'
+    })
+    .then(response => response.json()
+      .then(rate => this.setState({rate}))
+    )
+    console.log('rate = ', this.state.rate)
+    
     const {prod}=this.state
     this.setState(( {selectProduct})=>{
       const idx = prod.findIndex(el=>el.id===id)
-      // console.log(idx);
-      
       const oldItem = prod[idx]
-    //   console.log('oldItem = ',oldItem);
-      // const newProduct = {...oldItem}
       return{
         selectProduct: [oldItem]
       }
     })
-    // console.log('select',this.state.selectProduct);
-    
   }
   
   render() {
-    // const {product} = this.state
-    const { prod, selectProduct } = this.state
-    // console.log('Product =', prod);
+    const { prod, selectProduct, rate } = this.state
     
     return (
         <div>
@@ -52,6 +49,7 @@ class App extends Component {
             <div>
                 <ProductTitle
                     selectProduct = {selectProduct}
+                    rate = {rate}
                 />
             </div>
         </div>
@@ -59,4 +57,3 @@ class App extends Component {
   }
 }
 
-export default App;
