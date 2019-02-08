@@ -11,10 +11,11 @@ export default class ProductTitle extends Component {
   }
   submitForm =(e) => {
       e.preventDefault()
+      this.props.onSubmitForm(this.state.value)
       
   }
   render(){
-    const { selectProduct, rate} = this.props
+    const { selectProduct, rate, authorization} = this.props
     const title = selectProduct.map((item)=>{
     const {id, title, img, text} = item
     return(
@@ -37,7 +38,7 @@ export default class ProductTitle extends Component {
       }
       let formatted = date.toLocaleDateString('en-EN', options)
     return(
-      <div key={feedback.id}> 
+      <div key={feedback.id} className="container"> 
         <p key={id}> Nickname: {username}, at: {formatted}</p>
         <p>Comment: {feedback.text}</p>
       </div>
@@ -49,8 +50,8 @@ export default class ProductTitle extends Component {
             {title}
         </div>
         <div>
-            <p>Отзывы и коментарии</p>
-            <form className="item-add-form d-flex"
+            <p>Feedback</p>
+            {authorization && (<form className="item-add-form d-flex"
             onSubmit={this.submitForm}
             >
             <input className="form-control"
@@ -62,7 +63,7 @@ export default class ProductTitle extends Component {
                 <button className="btn btn-outline-secondary">
                     Add feedback
                 </button>
-            </form>
+            </form>)}
             {productRate}
         </div>
     </div>

@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import {Link} from "react-router-dom"
 
 export default class Registration extends Component {
 
     state = {
         login: '',
-        pass: ''
+        pass: '',
+        authorization:''
     }
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value})
@@ -22,7 +24,8 @@ export default class Registration extends Component {
           .then(response => response.json() 
             .then(token => {
                 console.log('token',token.token);
-                localStorage.setItem('token', token.token)
+                localStorage.setItem('authorization', token.token)
+                this.setState({authorization: token.token})
         }
             )
             .catch(function (error) {
@@ -33,6 +36,13 @@ export default class Registration extends Component {
     render(){
        
         return(
+            <div>
+            <nav className='navbar navbar-expand-md navbar-light bg-light sticky-top'>
+            <ul className="navbar-nav ml-auto">
+                    <li className="nav-item active"><Link to="/" className="nav-link">Home</Link></li>
+                    <li className="nav-item active"><Link to="/login" className="nav-link">Login</Link></li>
+            </ul>
+          </nav>
             <form>
                 <div className=" col-auto align-items-center">
                     <p className="form-group">Form registration</p>
@@ -46,8 +56,9 @@ export default class Registration extends Component {
                     onChange={this.handleChange} name="pass"/>
                 </div>
                 <button className="btn btn btn-primary" onClick={this.regForm}>Registrations</button>
-                <button className="btn btn btn-secondary" >Login</button>
+                {/* <button className="btn btn btn-secondary" ><Link to="/login">Login</Link></button> */}
             </form>
+            </div>
         )
     }
 }
