@@ -15,6 +15,8 @@ export default class ProductTitle extends Component {
       e.preventDefault()
       const { comment, changeRate } =this.state
       this.props.onSubmitForm(comment, changeRate)
+      this.setState({comment: ''})
+      this.setState({changeRate: ''})
       
   }
   changeRate = (e) => {

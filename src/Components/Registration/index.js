@@ -23,9 +23,10 @@ export default class Registration extends Component {
           })
           .then(response => response.json() 
             .then(token => {
-                console.log('token',token.token);
-                localStorage.setItem('authorization', token.token)
-                this.setState({authorization: token.token})
+                // console.log('token',token.token);
+                // localStorage.setItem('authorization', token.token)
+                // this.setState({authorization: token.token})
+                this.props.history.push('/login')
         }
             )
             .catch(function (error) {
@@ -43,7 +44,7 @@ export default class Registration extends Component {
                     <li className="nav-item active"><Link to="/login" className="nav-link">Login</Link></li>
             </ul>
           </nav>
-            <form>
+            <form className="form-group">
                 <div className=" col-auto align-items-center">
                     <p className="form-group">Form registration</p>
                     <p className="FormTItle">Login</p>

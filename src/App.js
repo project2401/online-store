@@ -10,7 +10,7 @@ export default class App extends Component {
     rate:[],
     onLoad:false,
     authorization:'',
-    // changeRate: ''
+    idProduct:''
   }
   
   componentDidMount(){
@@ -31,6 +31,9 @@ export default class App extends Component {
     // console.log('rate = ', this.state.rate)
     this.setState({onLoad: true})
     this.setState({authorization: this.props.authorization})
+    this.setState({idProduct: id})
+    // console.log('idProduct = =',this.state.idProduct);
+    
     const {prod}=this.state
     this.setState(( {selectProduct})=>{
       const idx = prod.findIndex(el=>el.id===id)
@@ -41,10 +44,19 @@ export default class App extends Component {
     })
   }
   onSubmitForm = (comment, changeRate) => {
-    this.setState(({rate})=>{
-      // console.log('Rate ===',this.state.rate);
-      
+    let id = this.state.idProduct
+    let formData = new FormData();
+    console.log('comment', comment)
+    console.log('changeRate', changeRate)
+    
+    formData.append('rate',changeRate); 
+    formData.append('text', comment);
+    fetch(`http://smktesting.herokuapp.com/api/reviews/${id}/`,{
+      method:'post',
+      body: formData
+    //   headers:myHeaders
     })
+  
   }
   logout = (e) => {
     e.preventDefault()
