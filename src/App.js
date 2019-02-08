@@ -9,7 +9,8 @@ export default class App extends Component {
     selectProduct:[],
     rate:[],
     onLoad:false,
-    authorization:''
+    authorization:'',
+    // changeRate: ''
   }
   
   componentDidMount(){
@@ -27,7 +28,7 @@ export default class App extends Component {
     .then(response => response.json()
       .then(rate => this.setState({rate}))
     )
-    console.log('rate = ', this.state.rate)
+    // console.log('rate = ', this.state.rate)
     this.setState({onLoad: true})
     this.setState({authorization: this.props.authorization})
     const {prod}=this.state
@@ -39,9 +40,10 @@ export default class App extends Component {
       }
     })
   }
-  onSubmitForm = (e) => {
+  onSubmitForm = (comment, changeRate) => {
     this.setState(({rate})=>{
-
+      // console.log('Rate ===',this.state.rate);
+      
     })
   }
   logout = (e) => {
@@ -55,13 +57,18 @@ export default class App extends Component {
     this.setState({authorization: ''})
     
     
-    console.log('this.state.authorization', this.state.authorization);
+    // console.log('this.state.authorization', this.state.authorization);
     
   }
+  // changeRate = (e) =>{
+  //   this.setState({changeRate: e})
+  //   // console.log('changeRate in state ',this.state.changeRate);
+    
+  // }
   render() {
     const { prod, selectProduct, rate, onLoad, authorization } = this.state
     // const authorization = this.props.authorization
-    console.log("authorization in App =", authorization);
+    // console.log("authorization in App =", authorization);
     
     return (
         <div>
@@ -90,6 +97,7 @@ export default class App extends Component {
                     rate = {rate}
                     onSubmitForm = {this.onSubmitForm}
                     authorization= {authorization}
+                    changeRate = {this.changeRate}
                 />)}
             </div>
         </div>

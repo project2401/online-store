@@ -1,17 +1,25 @@
 import React, { Component } from 'react'
+import Stars from '../Stars';
 
 export default class ProductTitle extends Component {
   state ={
-      value:''
+      comment:'',
+      changeRate:''
   }
   onLabelChange = (e) => {
       this.setState({
-          value: e.target.value
+          comment: e.target.value
       })
   }
   submitForm =(e) => {
       e.preventDefault()
-      this.props.onSubmitForm(this.state.value)
+      const { comment, changeRate } =this.state
+      this.props.onSubmitForm(comment, changeRate)
+      
+  }
+  changeRate = (e) => {
+      this.setState({changeRate: e})
+      console.log('eeeee', e);
       
   }
   render(){
@@ -27,7 +35,6 @@ export default class ProductTitle extends Component {
     )
   })
   const productRate = rate.map((feedback)=>{
-    //id: 1, product: 1, rate: 4, text: "not bad", created_by: {…}, …
     const { id, username} = feedback.created_by
     const {created_at} = feedback
     let date = new Date(created_at)
@@ -51,15 +58,19 @@ export default class ProductTitle extends Component {
         </div>
         <div>
             <p>Feedback</p>
-            {authorization && (<form className="item-add-form d-flex"
-            onSubmit={this.submitForm}
-            >
-            <input className="form-control"
-                placeholder="Enter your item"
-                type="text"
-                onChange={this.onLabelChange}
-                value={this.state.value}
-            />
+            {authorization && (
+            <form className="item-add-form d-flex"
+                onSubmit={this.submitForm}
+                >
+                <Stars
+                changeRate = {this.changeRate}
+                />
+                <input className="form-control"
+                    placeholder="Enter your item"
+                    type="text"
+                    onChange={this.onLabelChange}
+                    value={this.state.value}
+                    />
                 <button className="btn btn-outline-secondary">
                     Add feedback
                 </button>

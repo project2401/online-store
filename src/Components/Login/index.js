@@ -31,6 +31,8 @@ export default class Login extends Component {
           .then(resJson => {
             console.log('token - ', resJson)
             if (!!resJson.token){
+              console.log('resJson.token',resJson.token);
+              
               // localStorage.setItem('authorization', resJson.token)
               // this.setState({authorization: resJson.token})
               this.props.authorization(resJson.token)
