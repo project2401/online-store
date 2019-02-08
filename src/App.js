@@ -48,13 +48,16 @@ export default class App extends Component {
     let formData = new FormData();
     console.log('comment', comment)
     console.log('changeRate', changeRate)
+    let  myHeaders = new Headers({
+      "Authorization": `Token ${this.state.authorization}`
+    });
     
     formData.append('rate',changeRate); 
     formData.append('text', comment);
-    fetch(`http://smktesting.herokuapp.com/api/reviews/${id}/`,{
+    fetch(`http://smktesting.herokuapp.com/api/reviews/${id}`,{
       method:'post',
-      body: formData
-    //   headers:myHeaders
+      body: formData,
+      headers:myHeaders
     })
   
   }
@@ -80,7 +83,7 @@ export default class App extends Component {
   render() {
     const { prod, selectProduct, rate, onLoad, authorization } = this.state
     // const authorization = this.props.authorization
-    // console.log("authorization in App =", authorization);
+    console.log("authorization in App =", authorization);
     
     return (
         <div>
