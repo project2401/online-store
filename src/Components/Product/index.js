@@ -4,7 +4,6 @@ const Product = ({
   prod,
   selectProduct
 }) => {
-  // console.log('prod = ', prod)
   const product = 
   prod.map((item)=>{
     const { id, title } = item
@@ -15,11 +14,9 @@ const Product = ({
         )
     });
   return (
-    <div>
+    <div className = "product">
       {product} 
     </div>
-      
-    
   )
 }
 export default Product

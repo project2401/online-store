@@ -76,6 +76,62 @@
 .star-rating.star-5 i ~ i ~ i ~ i ~i {
   width: 100%;
 }
+.row .container {
+  border: 2px solid #17a2b8;
+  margin: 2px 0 2px 0;
+  width: 100%;
+}
+.row .col .productInfo h2 {
+  border-bottom: 2px solid #000;
+}
+.row .col .productInfo .description {
+  font-size: 20px;
+  margin-top: 10px;
+  font-family: 'Garamond';
+  border-bottom: 2px solid #000;
+}
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  color: #000;
+}
+.formLogin .formTitle {
+  background: #fff;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.formLogin .btn {
+  margin-bottom: 7px;
+}
+.formRegistration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  color: #000;
+}
+.formRegistration .formTitle {
+  background: #fff;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.formRegistration .btn {
+  margin-bottom: 7px;
+}
+.product {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
 body {
-  max-width: 80%;
+  max-width: 60%;
+  margin: 0 auto;
+  background: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/I9MWSDR/blue-gradient-loop_ey_svynqx__F0000.png");
+  color: #fff;
 }

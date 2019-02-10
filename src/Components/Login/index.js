@@ -31,25 +31,18 @@ export default class Login extends Component {
           .then(resJson => {
             console.log('token - ', resJson)
             if (!!resJson.token){
-              console.log('resJson.token',resJson.token);
-              
-              // localStorage.setItem('authorization', resJson.token)
-              // this.setState({authorization: resJson.token})
               this.props.authorization(resJson.token)
-            //   localStorage.setItem('emailUser', this.state.email)
               this.props.history.push('/home')
             } else {
-              // localStorage.removeItem('authorization')
-              // this.setState({authorization: ''})
               this.props.history.push('/registration')
-              // window.location.href = "http://localhost:3000/registrations"
             }
       }).catch(error => {
-        console.log('error', error)
+        console.log('eror', error)
+        alert('This user is not registered. Please register.')
       })  
     })
     .catch(error => {
-      console.log('error', error)
+      console.log('eror', error)
     })
   }
     render(){
@@ -61,20 +54,21 @@ export default class Login extends Component {
                     <li className="nav-item active"><Link to="/registration" className="nav-link">Registrations</Link></li>
             </ul>
           </nav>
-            <form>
-                <div className=" col-auto align-items-center">
-                <p className="form-group">Login form</p>
-                    <p>Login</p>
-                    <input className="form-group" placeholder="Enter login" type="text" 
-                    onChange={this.handleChange} name="login"/>
+            <form className="formLogin">
+                <div className="formTitle">
+                   <div className="col-auto align-items-center">
+                        <h3 className="form-group">Login form</h3>
+                        <h5>Login</h5>
+                        <input className="form-group" placeholder="Enter login" type="text" 
+                        onChange={this.handleChange} name="login"/>
+                    </div>
+                    <div className=" col-auto align-items-center">
+                        <h5>Password</h5>
+                        <input className="form-group" placeholder="Enter password" type="password" 
+                        onChange={this.handleChange} name="pass"/>
+                    </div>
+                    <button className="btn btn btn-primary align-items-center" onClick={this.loginForm}>Login</button> 
                 </div>
-                <div className=" col align-items-center">
-                    <p>Password</p>
-                    <input className="form-group" placeholder="Enter password" type="password" 
-                    onChange={this.handleChange} name="pass"/>
-                </div>
-                {/* <button className="btn btn btn-primary"><Link to="/registration">Registrations</Link></button> */}
-                <button className="btn btn btn-primary" onClick={this.loginForm}>Login</button>
             </form>
           </div>
         )

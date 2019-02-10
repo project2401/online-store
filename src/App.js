@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Product from './Components/Product';
 import ProductTitle from './Components/ProductTitle';
 import { Link } from 'react-router-dom'
+import './style/style.css'
 
 export default class App extends Component {
   state = {
@@ -70,25 +71,15 @@ export default class App extends Component {
       this.props.delAuthorization(e)
     }
     this.setState({authorization: ''})
-    
-    
-    // console.log('this.state.authorization', this.state.authorization);
-    
   }
-  // changeRate = (e) =>{
-  //   this.setState({changeRate: e})
-  //   // console.log('changeRate in state ',this.state.changeRate);
-    
-  // }
+  
   render() {
     const { prod, selectProduct, rate, onLoad, authorization } = this.state
-    // const authorization = this.props.authorization
     console.log("authorization in App =", authorization);
     
     return (
         <div>
             <nav className='navbar navbar-expand-md navbar-light bg-light sticky-top'>
-             
              <button className="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
                 <span className="navbar-toggler-icon"></span>

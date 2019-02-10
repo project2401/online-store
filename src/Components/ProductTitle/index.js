@@ -29,10 +29,11 @@ export default class ProductTitle extends Component {
     const title = selectProduct.map((item)=>{
     const {id, title, img, text} = item
     return(
-      <nav key = {id}>
-        <div>{title}</div>
-        <div>{img}</div>
-        <div>{text}</div>
+      <nav key = {id} className="productInfo">
+        <h2>{title}</h2>
+        <img src={img}/>
+        <div>Product Description</div>
+        <div className="description">{text}</div>
       </nav>
     )
   })
@@ -48,14 +49,16 @@ export default class ProductTitle extends Component {
       let formatted = date.toLocaleDateString('en-EN', options)
     return(
       <div key={feedback.id} className="container"> 
-        <p key={id}> Nickname: {username}, at: {formatted}</p>
-        <p>Comment: {feedback.text}</p>
+        <h4 key={id}> {username}</h4>
+        <nav>{formatted}</nav> 
+        <h5>Rate: {feedback.rate}</h5>
+        <nav>{feedback.text}</nav>
       </div>
     )
   })
   return (
     <div className="row">
-        <div className="col">
+        <div className="col-auto">
             {title}
         </div>
         <div>
@@ -71,9 +74,9 @@ export default class ProductTitle extends Component {
                     placeholder="Enter your item"
                     type="text"
                     onChange={this.onLabelChange}
-                    value={this.state.value}
+                    value={this.state.comment}
                     />
-                <button className="btn btn-outline-secondary">
+                <button className="btn btn-success">
                     Add feedback
                 </button>
             </form>)}

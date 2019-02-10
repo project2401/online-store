@@ -10,14 +10,12 @@ state = {
 }
     authorization = (auth) => {
         this.setState({ authorization: auth })
-        // console.log('authorization = ', this.state.authorization)
     }
     delAuthorization = () => {
         this.setState({authorization: ''})
     }
   render() {
 
-    // const isLogin = localStorage.getItem('token')
     const {authorization} = this.state
 
     return (
@@ -37,17 +35,14 @@ state = {
                         <Switch>
                             <Route  path="/login"  exact component={Login} />
                             <Route  path="/registration"  exact component={Registration} />
-                            {/* <Route  path="/home"  exact component={App} /> */}
                             <Route  path="/home"  exact render={()=><App authorization={authorization}
                             delAuthorization = {this.delAuthorization}/>} />
                             <Redirect  from='/' to='/home' />
-                            {/* <Redirect  from='/' to='/login' /> */}
                         </Switch>
                     )}
                     </Switch>
               </div>
           </Router>
-        
       </div>
     )
   }
