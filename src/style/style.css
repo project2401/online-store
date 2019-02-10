@@ -58,7 +58,8 @@
   vertical-align: middle;
 }
 .star-rating.star-5 {
-  width: 250px;
+  width: 91px;
+  height: 18px;
 }
 .star-rating.star-5 input,
 .star-rating.star-5 i {
