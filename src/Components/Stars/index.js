@@ -3,14 +3,12 @@ import React, { Component } from 'react'
 export default class Stars extends Component {
   
     changeRate = (e) => {
-        // console.log('changeRate = ', e.target.value)
         this.props.changeRate(e.target.value)
     }
   render(){
-    // const {changeRate} = this.props
     return(
         <div> 
-            <span>Rate product</span>
+            <h3>Rate product</h3>
             <span className="star-rating star-5" onChange = { this.changeRate }>
                 <input type="radio" name="rating" value="1"/><i></i>
                 <input type="radio" name="rating" value="2"/><i></i>
