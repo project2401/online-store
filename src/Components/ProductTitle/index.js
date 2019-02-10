@@ -61,15 +61,15 @@ export default class ProductTitle extends Component {
         <div className="col-auto">
             {title}
         </div>
-        <div>
-            <p>Feedback</p>
+        <div className="col-7">
+            <h4>Feedback</h4>
             {authorization && (
-            <form className="item-add-form d-flex"
+            <form className="item-add-form"
                 onSubmit={this.submitForm}
                 >
                 <Stars
-                changeRate = {this.changeRate}
-                />
+                    changeRate = {this.changeRate}
+                    />
                 <input className="form-control"
                     placeholder="Enter your item"
                     type="text"
